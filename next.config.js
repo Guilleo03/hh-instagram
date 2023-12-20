@@ -4,7 +4,7 @@ const nextConfig = {
     prependData: `@import "@/styles/breakpoints"; @import "@/styles/variables";`,
   },
   images: {
-    domains: ['images.prismic.io'],
+    domains: ['plus.unsplash.com'],
   },
 };
 

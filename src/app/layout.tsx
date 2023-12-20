@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { MantineProvider, ColorSchemeScript } from '@mantine/core';
+import { MantineProvider, ColorSchemeScript, Container } from '@mantine/core';
 import '@/styles/globals.scss';
 import Nav from '@/components/Nav';
 // import { redHatDisplay } from '@/fonts/fonts';
@@ -37,7 +37,7 @@ export default function RootLayout({
             },
           }}>
           <Nav />
-          {children}
+          <Container>{children}</Container>
         </MantineProvider>
       </body>
     </html>

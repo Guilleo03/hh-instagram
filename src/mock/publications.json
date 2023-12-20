@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "photoUrl": "https://plus.unsplash.com/premium_photo-1700169566055-df258bcc9345?q=80&w=2874&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "title": "This is a desert",
+    "userId": 1
+  },
+  {
+    "id": 2,
+    "photoUrl": "https://plus.unsplash.com/premium_photo-1700169566055-df258bcc9345?q=80&w=2874&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "title": "This is a desert",
+    "userId": 1
+  },
+  {
+    "id": 3,
+    "photoUrl": "https://plus.unsplash.com/premium_photo-1700169566055-df258bcc9345?q=80&w=2874&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "title": "This is a desert",
+    "userId": 1
+  },
+  {
+    "id": 4,
+    "photoUrl": "https://plus.unsplash.com/premium_photo-1700169566055-df258bcc9345?q=80&w=2874&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "title": "This is a desert",
+    "userId": 1
+  },
+  {
+    "id": 5,
+    "photoUrl": "https://plus.unsplash.com/premium_photo-1700169566055-df258bcc9345?q=80&w=2874&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "title": "This is a desert",
+    "userId": 1
+  }
+]
