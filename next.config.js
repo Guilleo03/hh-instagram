@@ -1,4 +1,11 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  sassOptions: {
+    prependData: `@import "@/styles/breakpoints"; @import "@/styles/variables";`,
+  },
+  images: {
+    domains: ['images.prismic.io'],
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
