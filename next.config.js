@@ -4,7 +4,18 @@ const nextConfig = {
     prependData: `@import "@/styles/breakpoints"; @import "@/styles/variables";`,
   },
   images: {
-    domains: ['plus.unsplash.com', 'images.unsplash.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'plus.unsplash.com',
+        port: '',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        port: '',
+      },
+    ],
   },
 };
 
