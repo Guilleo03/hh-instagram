@@ -2,9 +2,8 @@
 
 import type { Publication } from '@/types/types';
 import PublicationFeed from '../PublicationFeed';
-import styles from './Feed.module.scss';
-import { Box } from '@mantine/core';
 import Masonry from 'react-responsive-masonry';
+import styles from './Feed.module.scss';
 
 type Props = {
   publications: Publication[];
@@ -12,17 +11,11 @@ type Props = {
 
 const Feed = ({ publications }: Props) => {
   return (
-    <>
-      <Box className={styles.root}>
-        {publications.map(item => (
-          <PublicationFeed
-            key={item.id}
-            publication={item}
-            className={styles.publication}
-          />
-        ))}
-      </Box>
-    </>
+    <Masonry className={styles.root} columnsCount={2} gutter="20px">
+      {publications.map(item => (
+        <PublicationFeed key={item.id} publication={item} />
+      ))}
+    </Masonry>
   );
 };
 

@@ -1,16 +1,16 @@
 import type { Publication } from '@/types/types';
 import Image from 'next/image';
 import { Box } from '@mantine/core';
+import styles from './Publication.module.scss';
 
 type Props = {
   publication: Publication;
-  className: string;
 };
 
-const PublicationFeed = ({ publication, className }: Props) => {
+const PublicationFeed = ({ publication }: Props) => {
   const { id, photoUrl, title } = publication;
   return (
-    <Box className={className}>
+    <Box className={styles.root}>
       <Image key={id} src={photoUrl} alt={title} layout="fill" />
     </Box>
   );

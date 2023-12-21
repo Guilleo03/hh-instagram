@@ -4,7 +4,7 @@ import Logo from '@/components/Logo';
 
 const Nav = () => {
   return (
-    <Box component="nav" py={15}>
+    <Box component="nav" py={20}>
       <Container>
         <Flex align="center" justify="space-between">
           <Logo />

@@ -1,20 +1,3 @@
 .root {
-  width: 100%;
-  margin: 20px auto;
-  columns: 2;
-  column-gap: 20px;
-
-  .publication {
-    position: relative;
-    width: 100%;
-    margin-bottom: 20px;
-    break-inside: avoid;
-
-    img {
-      max-width: 100%;
-      border-radius: 10px;
-      display: block;
-      position: relative !important;
-    }
-  }
+  margin-top: 50px;
 }
