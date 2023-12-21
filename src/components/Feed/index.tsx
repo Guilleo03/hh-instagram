@@ -1,5 +1,10 @@
+'use client';
+
 import type { Publication } from '@/types/types';
-import Image from 'next/image';
+import PublicationFeed from '../PublicationFeed';
+import styles from './Feed.module.scss';
+import { Box } from '@mantine/core';
+import Masonry from 'react-responsive-masonry';
 
 type Props = {
   publications: Publication[];
@@ -7,17 +12,17 @@ type Props = {
 
 const Feed = ({ publications }: Props) => {
   return (
-    <div>
-      {publications.map(item => (
-        <Image
-          key={item.id}
-          src={item.photoUrl}
-          alt={item.title}
-          width={200}
-          height={400}
-        />
-      ))}
-    </div>
+    <>
+      <Box className={styles.root}>
+        {publications.map(item => (
+          <PublicationFeed
+            key={item.id}
+            publication={item}
+            className={styles.publication}
+          />
+        ))}
+      </Box>
+    </>
   );
 };
 
