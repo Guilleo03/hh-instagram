@@ -16,7 +16,7 @@ const Logo = ({ color = 'dark', size = 1 }: Props) => {
 
   return (
     <Link href="/" className={cn(styles.root, classes)}>
-      <Title order={size}>My Instagram</Title>
+      <Title order={size}>hh Instagram</Title>
     </Link>
   );
 };

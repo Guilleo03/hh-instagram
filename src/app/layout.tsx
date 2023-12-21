@@ -5,8 +5,8 @@ import Nav from '@/components/Nav';
 // import { redHatDisplay } from '@/fonts/fonts';
 
 export const metadata: Metadata = {
-  title: 'My Instagram',
-  description: 'My Instagram with S3 and chat real-time',
+  title: 'hh Instagram',
+  description: 'hh Instagram with S3 and chat real-time',
 };
 
 export default function RootLayout({
