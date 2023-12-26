@@ -1,6 +1,9 @@
-import styles from './Nav.module.scss';
+'use client';
+
 import { Box, Button, UnstyledButton, Flex, Container } from '@mantine/core';
 import Logo from '@/components/Logo';
+import { useContext } from '@/store';
+import UploadPhoto from '@/components/UploadPhoto';
 
 const Nav = () => {
   return (
@@ -9,11 +12,7 @@ const Nav = () => {
         <Flex align="center" justify="space-between">
           <Logo />
           <Flex gap={80}>
-            <Button
-              variant="gradient"
-              gradient={{ from: 'blue', to: 'cyan', deg: 90 }}>
-              Upload photo
-            </Button>
+            <UploadPhoto />
             <UnstyledButton>
               <Flex align="center" gap={6}>
                 Sign out

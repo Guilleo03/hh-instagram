@@ -18,8 +18,10 @@
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",
+    "react-hook-form": "^7.49.2",
     "react-responsive-masonry": "^2.1.7",
-    "sass": "^1.69.5"
+    "sass": "^1.69.5",
+    "zustand": "^4.4.7"
   },
   "devDependencies": {
     "@types/node": "^20",
