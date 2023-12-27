@@ -7,6 +7,7 @@ import {
   List,
   Avatar,
   UnstyledButton,
+  ScrollArea,
 } from '@mantine/core';
 import onlineUsers from '@/mock/onlineUsers.json';
 import variables from '@/styles/exportVariables.module.scss';
@@ -27,7 +28,6 @@ const ChatList = () => {
   return (
     <Accordion
       variant="separated"
-      defaultValue="Apples"
       pos="fixed"
       right={0}
       bottom={0}
@@ -41,9 +41,11 @@ const ChatList = () => {
           </Flex>
         </Accordion.Control>
         <Accordion.Panel pt={15} px={0}>
-          <List listStyleType="none" w={'100%'}>
-            {list}
-          </List>
+          <ScrollArea h={800}>
+            <List listStyleType="none" w={'100%'}>
+              {list}
+            </List>
+          </ScrollArea>
         </Accordion.Panel>
       </Accordion.Item>
     </Accordion>

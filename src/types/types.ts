@@ -10,3 +10,9 @@ export type FormUploadPhoto = {
   photo: any;
   title: string;
 };
+
+export type User = {
+  id: string | number;
+  name: string;
+  avatar: string;
+};

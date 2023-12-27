@@ -3,6 +3,8 @@ import { MantineProvider, ColorSchemeScript, Container } from '@mantine/core';
 import '@/styles/globals.scss';
 import Nav from '@/components/Nav';
 import ChatList from '@/components/ChatList';
+import ChatsOpened from '@/components/ChatsOpened';
+import colors from '@/styles/exportVariables.module.scss';
 // import { redHatDisplay } from '@/fonts/fonts';
 
 export const metadata: Metadata = {
@@ -26,7 +28,9 @@ export default function RootLayout({
         />
         <ColorSchemeScript />
       </head>
-      <body suppressHydrationWarning>
+      <body
+        suppressHydrationWarning
+        style={{ backgroundColor: colors.bgColor }}>
         <MantineProvider
           theme={{
             components: {
@@ -40,6 +44,7 @@ export default function RootLayout({
           <Nav />
           <Container>
             {children}
+            <ChatsOpened />
             <ChatList />
           </Container>
         </MantineProvider>
