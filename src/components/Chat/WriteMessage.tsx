@@ -16,11 +16,11 @@ const WriteMessage = ({ setMessages, scrollToBottom }: Props) => {
   const { register, handleSubmit, reset } = useForm<Input>();
 
   const onSubmit: SubmitHandler<Input> = data => {
-    console.log(data);
     setMessages(current => [...current, data.message]);
     reset();
     scrollToBottom();
   };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Flex align={'center'} gap={15}>

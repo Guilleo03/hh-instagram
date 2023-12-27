@@ -2,8 +2,7 @@ import type { Metadata } from 'next';
 import { MantineProvider, ColorSchemeScript, Container } from '@mantine/core';
 import '@/styles/globals.scss';
 import Nav from '@/components/Nav';
-import ChatList from '@/components/ChatList';
-import ChatsOpened from '@/components/ChatsOpened';
+import ChatLayout from '@/components/ChatLayout';
 import colors from '@/styles/exportVariables.module.scss';
 // import { redHatDisplay } from '@/fonts/fonts';
 
@@ -44,8 +43,7 @@ export default function RootLayout({
           <Nav />
           <Container>
             {children}
-            <ChatsOpened />
-            <ChatList />
+            <ChatLayout />
           </Container>
         </MantineProvider>
       </body>

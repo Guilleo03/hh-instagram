@@ -9,27 +9,39 @@ import {
   Divider,
 } from '@mantine/core';
 import type { User } from '@/types/types';
-import { IconX } from '@tabler/icons-react';
 import colors from '@/styles/exportVariables.module.scss';
 import WriteMessage from './WriteMessage';
-import { useState, useRef } from 'react';
+import { useState, useRef, Dispatch, SetStateAction } from 'react';
 import Message from './Message';
+import { CloseButton } from '@mantine/core';
 
-const Chat = ({ avatar, id, name }: User) => {
+type Props = {
+  setTotalChatsOpened: Dispatch<SetStateAction<User[]>>;
+  user: User;
+};
+
+const Chat = ({ setTotalChatsOpened, user }: Props) => {
   const [messages, setMessages] = useState<string[]>([]);
   const viewport = useRef<HTMLDivElement>(null);
 
+  const { avatar, id, name } = user;
+
   const scrollToBottom = () =>
     viewport.current!.scrollTo({
-      top: viewport.current!.scrollHeight + 100,
+      top: viewport.current!.scrollHeight,
       behavior: 'smooth',
     });
 
+  const handleCloseChat = (id: string) => {
+    setTotalChatsOpened(current => current.filter(user => user.id != id));
+  };
+
   return (
     <Accordion
+      defaultValue={id.toString()}
       variant="separated"
       w={350}
-      chevron={<IconX />}
+      chevron={<CloseButton onClick={() => handleCloseChat(id as string)} />}
       pos={'absolute'}
       bottom={0}>
       <Accordion.Item
