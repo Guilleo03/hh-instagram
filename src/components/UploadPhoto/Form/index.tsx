@@ -1,25 +1,14 @@
 import { Box } from '@mantine/core';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm, SubmitHandler, FormProvider } from 'react-hook-form';
 import type { FormUploadPhoto } from '@/types/types';
-import { ReactNode } from 'react';
 import FormActions from './FormActions';
+import Content from './Content';
+import { useState } from 'react';
 
-type Props = {
-  children: ReactNode;
-  isUploadingPublication: boolean;
-  isSubmitButton: boolean;
-  prevStep: () => void;
-  nextStep: () => void;
-};
+const Form = () => {
+  const methods = useForm<FormUploadPhoto>();
 
-const Form = ({
-  children,
-  isUploadingPublication,
-  isSubmitButton,
-  prevStep,
-  nextStep,
-}: Props) => {
-  const { handleSubmit } = useForm<FormUploadPhoto>();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const onSubmit: SubmitHandler<FormUploadPhoto> = data => {
     console.log(data);
@@ -27,15 +16,12 @@ const Form = ({
 
   return (
     <Box mt={30}>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        {children}
-        <FormActions
-          isSubmitButton={isSubmitButton}
-          isUploadingPublication={isUploadingPublication}
-          nextStep={nextStep}
-          prevStep={prevStep}
-        />
-      </form>
+      <FormProvider {...methods}>
+        <form onSubmit={methods.handleSubmit(onSubmit)}>
+          <Content />
+          <FormActions isLoading={isLoading} />
+        </form>
+      </FormProvider>
     </Box>
   );
 };

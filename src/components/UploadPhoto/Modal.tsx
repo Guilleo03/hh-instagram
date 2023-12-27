@@ -1,5 +1,5 @@
 import { Modal as ModalMantine, Space } from '@mantine/core';
-import Stepper from '@/components/Stepper';
+import Form from './Form';
 
 type Props = {
   opened: boolean;
@@ -23,7 +23,7 @@ const Modal = ({ opened, onClose }: Props) => {
         timingFunction: 'ease-in-out',
       }}>
       <Space h={'md'} />
-      <Stepper />
+      <Form />
     </ModalMantine>
   );
 };
