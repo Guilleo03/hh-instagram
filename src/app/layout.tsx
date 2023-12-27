@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { MantineProvider, ColorSchemeScript, Container } from '@mantine/core';
 import '@/styles/globals.scss';
 import Nav from '@/components/Nav';
+import ChatList from '@/components/ChatList';
 // import { redHatDisplay } from '@/fonts/fonts';
 
 export const metadata: Metadata = {
@@ -37,7 +38,10 @@ export default function RootLayout({
             },
           }}>
           <Nav />
-          <Container>{children}</Container>
+          <Container>
+            {children}
+            <ChatList />
+          </Container>
         </MantineProvider>
       </body>
     </html>

@@ -1,7 +1,7 @@
 @import '@mantine/core/styles.css';
 @import '@mantine/dropzone/styles.css';
 @import 'breakpoints';
-@import 'variables';
+// @import 'variables.module';
 
 * {
   margin: 0;
@@ -12,4 +12,20 @@
 html,
 body {
   font-family: 'Red Hat Display', sans-serif;
+}
+
+.chatList_item {
+  transition: background-color 0.3s ease-in-out;
+  &:hover {
+    background-color: #f5f5f5;
+  }
+}
+
+.mantine-List-itemWrapper,
+.mantine-List-itemLabel {
+  width: 100%;
+}
+
+.mantine-Accordion-content {
+  padding: 0;
 }
