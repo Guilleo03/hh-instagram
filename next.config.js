@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   sassOptions: {
-    prependData: `@import "@/styles/breakpoints"; @import "@/styles/variables.module";`,
+    prependData: `@import "@/styles/breakpoints"; @import "@/styles/variables";`,
   },
   images: {
     remotePatterns: [

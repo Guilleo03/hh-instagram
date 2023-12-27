@@ -9,7 +9,7 @@ import {
   UnstyledButton,
 } from '@mantine/core';
 import onlineUsers from '@/mock/onlineUsers.json';
-import variables from '@/styles/variables.module.scss';
+import variables from '@/styles/exportVariables.module.scss';
 import { IconChevronUp } from '@tabler/icons-react';
 
 const ChatList = () => {
