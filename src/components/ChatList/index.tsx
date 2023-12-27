@@ -56,7 +56,7 @@ const ChatList = ({ setTotalChatsOpened }: Props) => {
           </Flex>
         </Accordion.Control>
         <Accordion.Panel pt={15} px={0}>
-          <ScrollArea h={800}>
+          <ScrollArea h={'80vh'}>
             <List listStyleType="none" w={'100%'}>
               {list}
             </List>
