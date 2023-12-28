@@ -1,9 +1,6 @@
-import { connectMongoDB } from '@/libs/mongodb';
-import User from '@/models/user';
 import NextAuth from 'next-auth/next';
 import GoogleProvider from 'next-auth/providers/google';
 import { createUser, isUserRegistered } from '@/utils/users';
-import { SetStateAction } from 'react';
 
 const { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SCRET } = process.env;
 

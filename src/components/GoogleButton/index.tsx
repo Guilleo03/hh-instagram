@@ -5,7 +5,7 @@ import './styles.scss';
 const GoogleButton = () => {
   return (
     <button
-      onClick={() => signIn('google')}
+      onClick={() => signIn('google', { callbackUrl: '/' })}
       className="gsi-material-button"
       style={{ width: 300 }}>
       <div className="gsi-material-button-state"></div>
