@@ -4,7 +4,8 @@ import '@/styles/globals.scss';
 import Nav from '@/components/Nav';
 import ChatLayout from '@/components/ChatLayout';
 import colors from '@/styles/exportVariables.module.scss';
-import { NextAuthProvider } from './Providers';
+import { NextAuthProvider } from '../Providers';
+import ProtectedLayout from '@/components/ProtectedLayout';
 // import { redHatDisplay } from '@/fonts/fonts';
 
 export const metadata: Metadata = {
@@ -42,11 +43,13 @@ export default function RootLayout({
                 },
               },
             }}>
-            <Nav />
-            <Container>
-              {children}
-              <ChatLayout />
-            </Container>
+            <ProtectedLayout>
+              <Nav />
+              <Container>
+                {children}
+                <ChatLayout />
+              </Container>
+            </ProtectedLayout>
           </MantineProvider>
         </NextAuthProvider>
       </body>
