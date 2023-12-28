@@ -14,5 +14,6 @@ export type FormUploadPhoto = {
 export type User = {
   id: string | number;
   name: string;
-  avatar: string;
+  image: string;
+  email: string;
 };

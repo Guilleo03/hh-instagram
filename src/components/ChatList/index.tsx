@@ -33,7 +33,7 @@ const ChatList = ({ setTotalChatsOpened }: Props) => {
         px={16}
         onClick={() => handleOpenChat(user)}>
         <Flex align="center" gap={10}>
-          <Avatar size={'sm'} src={user.avatar} alt="Avatar" />
+          <Avatar size={'sm'} src={user.image} alt="Avatar" />
           {user.name}
         </Flex>
       </UnstyledButton>

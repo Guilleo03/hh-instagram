@@ -1,3 +1,5 @@
+import { connectMongoDB } from '@/libs/mongodb';
+import User from '@/models/user';
 import NextAuth from 'next-auth/next';
 import GoogleProvider from 'next-auth/providers/google';
 
@@ -10,6 +12,42 @@ const authOptions = {
       clientSecret: GOOGLE_CLIENT_SCRET as string,
     }),
   ],
+  callbacks: {
+    async signIn({ user, account }: any) {
+      console.log({ user, account });
+
+      if (account.provider === 'google') {
+        const { id, name, email, image } = user;
+        try {
+          await connectMongoDB();
+          const userExist = await User.findOne({ email });
+
+          if (!userExist) {
+            const res = await fetch('http://localhost:3000/api/user', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                id,
+                name,
+                email,
+                image,
+              }),
+            });
+
+            if (res.ok) {
+              return user;
+            }
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
+
+      return user;
+    },
+  },
 };
 
 const handler = NextAuth(authOptions);

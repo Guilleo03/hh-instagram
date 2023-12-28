@@ -24,7 +24,7 @@ const Chat = ({ setTotalChatsOpened, user }: Props) => {
   const [messages, setMessages] = useState<string[]>([]);
   const viewport = useRef<HTMLDivElement>(null);
 
-  const { avatar, id, name } = user;
+  const { image, id, name } = user;
 
   const scrollToBottom = () =>
     viewport.current!.scrollTo({
@@ -48,7 +48,7 @@ const Chat = ({ setTotalChatsOpened, user }: Props) => {
         value={id.toString()}
         px={0}
         style={{ border: `1px solid ${colors.lightGrey}` }}>
-        <Accordion.Control icon={<Avatar src={avatar} size={'sm'} />}>
+        <Accordion.Control icon={<Avatar src={image} size={'sm'} />}>
           <Flex align="center" gap={20}>
             {name}
           </Flex>
