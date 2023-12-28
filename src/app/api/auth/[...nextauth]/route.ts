@@ -2,6 +2,8 @@ import { connectMongoDB } from '@/libs/mongodb';
 import User from '@/models/user';
 import NextAuth from 'next-auth/next';
 import GoogleProvider from 'next-auth/providers/google';
+import { createUser, isUserRegistered } from '@/utils/users';
+import { SetStateAction } from 'react';
 
 const { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SCRET } = process.env;
 
@@ -14,31 +16,13 @@ const authOptions = {
   ],
   callbacks: {
     async signIn({ user, account }: any) {
-      console.log({ user, account });
-
       if (account.provider === 'google') {
-        const { id, name, email, image } = user;
+        const { email } = user;
         try {
-          await connectMongoDB();
-          const userExist = await User.findOne({ email });
+          const userExist = await isUserRegistered(email);
 
           if (!userExist) {
-            const res = await fetch('http://localhost:3000/api/user', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({
-                id,
-                name,
-                email,
-                image,
-              }),
-            });
-
-            if (res.ok) {
-              return user;
-            }
+            await createUser(user);
           }
         } catch (error) {
           console.log(error);
