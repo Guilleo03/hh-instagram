@@ -1,11 +1,11 @@
 import React from 'react';
-import { Button } from '@mantine/core';
+import GoogleButton from '@/components/GoogleButton';
 
 const Page = () => {
   return (
     <div>
       Page
-      <Button>Click me</Button>
+      <GoogleButton />
     </div>
   );
 };

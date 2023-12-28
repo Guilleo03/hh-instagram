@@ -4,6 +4,7 @@ import '@/styles/globals.scss';
 import Nav from '@/components/Nav';
 import ChatLayout from '@/components/ChatLayout';
 import colors from '@/styles/exportVariables.module.scss';
+import { NextAuthProvider } from './Providers';
 // import { redHatDisplay } from '@/fonts/fonts';
 
 export const metadata: Metadata = {
@@ -30,22 +31,24 @@ export default function RootLayout({
       <body
         suppressHydrationWarning
         style={{ backgroundColor: colors.bgColor }}>
-        <MantineProvider
-          theme={{
-            components: {
-              Button: {
-                styles: {
-                  root: { ':active': { transform: 'none' } },
+        <NextAuthProvider>
+          <MantineProvider
+            theme={{
+              components: {
+                Button: {
+                  styles: {
+                    root: { ':active': { transform: 'none' } },
+                  },
                 },
               },
-            },
-          }}>
-          <Nav />
-          <Container>
-            {children}
-            <ChatLayout />
-          </Container>
-        </MantineProvider>
+            }}>
+            <Nav />
+            <Container>
+              {children}
+              <ChatLayout />
+            </Container>
+          </MantineProvider>
+        </NextAuthProvider>
       </body>
     </html>
   );
