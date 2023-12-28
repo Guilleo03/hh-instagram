@@ -1,13 +1,6 @@
 'use client';
 
-import {
-  Box,
-  UnstyledButton,
-  Flex,
-  Container,
-  Text,
-  Avatar,
-} from '@mantine/core';
+import { Box, UnstyledButton, Flex, Container, Avatar } from '@mantine/core';
 import Logo from '@/components/Logo';
 import UploadPhoto from '@/components/UploadPhoto';
 import { signOut, useSession } from 'next-auth/react';
