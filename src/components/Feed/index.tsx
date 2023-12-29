@@ -10,6 +10,8 @@ type Props = {
 };
 
 const Feed = ({ publications }: Props) => {
+  console.log(process.env.NODE_ENV);
+
   return (
     <Masonry className={styles.root} columnsCount={2} gutter="20px">
       {publications.map(item => (
