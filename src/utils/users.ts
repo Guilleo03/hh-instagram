@@ -4,7 +4,7 @@ import User from '@/models/user';
 
 export const createUser = async (user: UserType): Promise<any> => {
   const { id, name, email, image } = user;
-  const res = await fetch('http://localhost:3000/api/user', {
+  const res = await fetch('/api/user', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
