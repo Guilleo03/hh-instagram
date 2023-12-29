@@ -1,10 +1,14 @@
 import type { User as UserType } from '@/types/types';
 import { connectMongoDB } from '@/libs/mongodb';
 import User from '@/models/user';
+import { DEV_URL, PROD_URL } from './constants';
 
 export const createUser = async (user: UserType): Promise<any> => {
   const { id, name, email, image } = user;
-  const res = await fetch('/api/user', {
+
+  const BASE_URL = process.env.NODE_ENV === 'development' ? DEV_URL : PROD_URL;
+
+  const res = await fetch(`${BASE_URL}/api/user`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
