@@ -1,12 +1,12 @@
 import { create } from 'zustand';
 
 type Context = {
-  openUploadPhotoModal: boolean;
-  setOpenUploadPhotoModal: (isOpen: boolean) => void;
+  imageUrlPreview: string;
+  setImageUrlPreview: (url: string) => void;
 };
 
 export const useContext = create<Context>(set => ({
-  openUploadPhotoModal: false,
-  setOpenUploadPhotoModal: isOpen =>
-    set(() => ({ openUploadPhotoModal: isOpen })),
+  imageUrlPreview: '',
+  setImageUrlPreview: () =>
+    set(state => ({ imageUrlPreview: state.imageUrlPreview })),
 }));

@@ -7,7 +7,7 @@ export type Publication = {
 };
 
 export type FormUploadPhoto = {
-  photo: any;
+  file: any;
   title: string;
 };
 
