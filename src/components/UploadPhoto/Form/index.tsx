@@ -4,7 +4,7 @@ import type { FormUploadPhoto } from '@/types/types';
 import FormActions from './FormActions';
 import Content from './Content';
 import { useState } from 'react';
-import { uploadImage } from '@/utils/publications';
+import { showNotification } from '@/utils/utils';
 
 const Form = () => {
   const methods = useForm<FormUploadPhoto>();
@@ -23,8 +23,12 @@ const Form = () => {
         method: 'POST',
         body: formData,
       });
+
+      console.log('image uploaded');
+      showNotification('Publication uploaded succesfully');
     } catch (error) {
       console.log(error);
+      showNotification('An error ocurred uploading the publication', '', true);
     } finally {
       setIsLoading(false);
     }

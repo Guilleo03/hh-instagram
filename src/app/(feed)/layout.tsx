@@ -6,6 +6,7 @@ import ChatLayout from '@/components/ChatLayout';
 import colors from '@/styles/exportVariables.module.scss';
 import { NextAuthProvider } from '../Providers';
 import ProtectedLayout from '@/components/ProtectedLayout';
+import { Notifications } from '@mantine/notifications';
 // import { redHatDisplay } from '@/fonts/fonts';
 
 export const metadata: Metadata = {
@@ -33,19 +34,11 @@ export default function RootLayout({
         suppressHydrationWarning
         style={{ backgroundColor: colors.bgColor }}>
         <NextAuthProvider>
-          <MantineProvider
-            theme={{
-              components: {
-                Button: {
-                  styles: {
-                    root: { ':active': { transform: 'none' } },
-                  },
-                },
-              },
-            }}>
+          <MantineProvider>
             <ProtectedLayout>
               <Nav />
               <Container>
+                <Notifications position="bottom-left" zIndex={9999} />
                 {children}
                 <ChatLayout />
               </Container>
