@@ -4,14 +4,30 @@ import type { FormUploadPhoto } from '@/types/types';
 import FormActions from './FormActions';
 import Content from './Content';
 import { useState } from 'react';
+import { uploadImage } from '@/utils/publications';
 
 const Form = () => {
   const methods = useForm<FormUploadPhoto>();
-
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const onSubmit: SubmitHandler<FormUploadPhoto> = data => {
-    console.log(data);
+  const onSubmit: SubmitHandler<FormUploadPhoto> = async (data, e) => {
+    e?.preventDefault();
+    setIsLoading(true);
+
+    try {
+      const formData = new FormData();
+      formData.append('file', data.file[0]);
+      formData.append('title', data.title);
+
+      await fetch('/api/publication', {
+        method: 'POST',
+        body: formData,
+      });
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (

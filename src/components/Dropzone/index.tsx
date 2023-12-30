@@ -9,21 +9,24 @@ import {
 import { useFormContext, Controller } from 'react-hook-form';
 import { useState } from 'react';
 import Image from 'next/image';
+import { useContext } from '@/store';
 
 const DropzoneComponent = (props: Partial<DropzoneProps>) => {
   const { control } = useFormContext();
   const [files, setFiles] = useState<FileWithPath[]>([]);
 
+  const setImageUrlPreview = useContext(s => s.setImageUrlPreview);
+
   const previews = files.map((file, index) => {
-    const imageUrl = URL.createObjectURL(file);
+    const imagePreview = URL.createObjectURL(file);
     return (
       <Image
         key={index}
-        src={imageUrl}
+        src={imagePreview}
         alt="Preview"
         layout="fill"
         objectFit="contain"
-        onLoad={() => URL.revokeObjectURL(imageUrl)}
+        onLoad={() => URL.revokeObjectURL(imagePreview)}
       />
     );
   });
@@ -46,8 +49,10 @@ const DropzoneComponent = (props: Partial<DropzoneProps>) => {
           render={({ field: { onChange, onBlur } }) => (
             <Dropzone
               onDrop={files => {
+                const imageUrl = URL.createObjectURL(files[0]);
                 onChange(files);
                 setFiles(files);
+                setImageUrlPreview(imageUrl);
               }}
               onReject={files => console.log('rejected files', files)}
               onBlur={onBlur}
