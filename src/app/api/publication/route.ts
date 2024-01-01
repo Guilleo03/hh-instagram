@@ -1,8 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectMongoDB } from '@/libs/mongodb';
 import Publication from '@/models/publication';
-import { getImagePath, uploadImage } from '@/utils/publications';
-import cloudinary from '@/utils/cloudinary';
+import { uploadImage } from '@/utils/publications';
 
 // create
 export async function POST(request: NextRequest) {
@@ -10,17 +9,15 @@ export async function POST(request: NextRequest) {
     await connectMongoDB();
 
     const data = await request.formData();
-    const image = data.get('file');
+    const image = data.get('file') as string;
     const title = data.get('title');
 
     if (!image) {
       return NextResponse.json('Error uploading image', { status: 400 });
     }
 
-    const imagePath = await getImagePath(image);
-    const imageUploaded = await uploadImage(imagePath);
+    const imageUploaded = await uploadImage(image);
     const imageUploadedUrl = imageUploaded.secure_url;
-
     await Publication.create({ title, image: imageUploadedUrl });
     return NextResponse.json(
       { message: 'Publication uploaded' },

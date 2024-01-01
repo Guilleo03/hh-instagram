@@ -6,6 +6,27 @@ import Content from './Content';
 import { useState } from 'react';
 import { showNotification } from '@/utils/utils';
 
+function getBase64(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      if (typeof reader.result === 'string') {
+        const base64String = reader.result;
+        resolve(base64String);
+      } else {
+        reject(new Error('Failed to convert image to base64'));
+      }
+    };
+
+    reader.onerror = () => {
+      reject(new Error('Error reading the image file'));
+    };
+
+    reader.readAsDataURL(file);
+  });
+}
+
 const Form = () => {
   const methods = useForm<FormUploadPhoto>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -14,9 +35,11 @@ const Form = () => {
     e?.preventDefault();
     setIsLoading(true);
 
+    const imgBase64 = await getBase64(data.file[0]);
+
     try {
       const formData = new FormData();
-      formData.append('file', data.file[0]);
+      formData.append('file', imgBase64);
       formData.append('title', data.title);
 
       await fetch('/api/publication', {
@@ -24,7 +47,6 @@ const Form = () => {
         body: formData,
       });
 
-      console.log('image uploaded');
       showNotification('Publication uploaded succesfully');
     } catch (error) {
       console.log(error);

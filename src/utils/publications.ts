@@ -1,6 +1,5 @@
 import cloudinary from '@/utils/cloudinary';
-import path from 'path';
-import { promises } from 'fs';
+import { readFile } from 'fs/promises';
 
 // upload image to Cloudinary
 export const uploadImage = async (imagePath: string) => {
@@ -14,18 +13,13 @@ export const uploadImage = async (imagePath: string) => {
   }
 };
 
-export const getImagePath = async (
-  image: FormDataEntryValue | null
-): Promise<string> => {
-  if (!image) return '';
-
-  // @ts-ignore
-  const bytes = await image.arrayBuffer();
-  const buffer = Buffer.from(bytes);
-
-  // @ts-ignore
-  const filePath = path.join(process.cwd(), 'public', image.name);
-  await promises.writeFile(filePath, buffer);
-
-  return filePath;
+export const getBase64 = async (file: File): Promise<string> => {
+  try {
+    // @ts-ignore
+    const buffer = await readFile(file.path);
+    const base64String = buffer.toString('base64');
+    return base64String;
+  } catch (error) {
+    throw new Error(`Error reading the image file`);
+  }
 };
