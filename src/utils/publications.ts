@@ -27,7 +27,7 @@ export const getBase64 = async (file: File): Promise<string> => {
 
 export async function getPublications() {
   const BASE_URL = process.env.NODE_ENV === 'development' ? DEV_URL : PROD_URL;
-  const res = await fetch(`${BASE_URL}/api/publication`);
+  const res = await fetch(`${BASE_URL}/api/publication`, { cache: 'no-store' });
   const data = await res.json();
   return data;
 }
