@@ -8,10 +8,10 @@ type Props = {
 };
 
 const PublicationFeed = ({ publication }: Props) => {
-  const { id, photoUrl, title } = publication;
+  const { id, image, title } = publication;
   return (
     <Box className={styles.root}>
-      <Image key={id} src={photoUrl} alt={title} layout="fill" />
+      <Image key={id} src={image} alt={title} layout="fill" />
     </Box>
   );
 };

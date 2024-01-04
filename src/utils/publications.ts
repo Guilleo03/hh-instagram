@@ -1,5 +1,6 @@
 import cloudinary from '@/utils/cloudinary';
 import { readFile } from 'fs/promises';
+import { DEV_URL, PROD_URL } from './constants';
 
 // upload image to Cloudinary
 export const uploadImage = async (imagePath: string) => {
@@ -23,3 +24,10 @@ export const getBase64 = async (file: File): Promise<string> => {
     throw new Error(`Error reading the image file`);
   }
 };
+
+export async function getPublications() {
+  const BASE_URL = process.env.NODE_ENV === 'development' ? DEV_URL : PROD_URL;
+  const res = await fetch(`${BASE_URL}/api/publication`);
+  const data = await res.json();
+  return data;
+}

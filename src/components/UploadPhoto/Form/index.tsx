@@ -27,7 +27,11 @@ function getBase64(file: File): Promise<string> {
   });
 }
 
-const Form = () => {
+type Props = {
+  onClose: () => void;
+};
+
+const Form = ({ onClose }: Props) => {
   const methods = useForm<FormUploadPhoto>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -46,14 +50,13 @@ const Form = () => {
         method: 'POST',
         body: formData,
       });
-
+      onClose();
       showNotification('Publication uploaded succesfully');
     } catch (error) {
       console.log(error);
       showNotification('An error ocurred uploading the publication', '', true);
-    } finally {
-      setIsLoading(false);
     }
+    setIsLoading(false);
   };
 
   return (
@@ -61,7 +64,7 @@ const Form = () => {
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)}>
           <Content />
-          <FormActions isLoading={isLoading} />
+          <FormActions isLoading={isLoading} onClose={onClose} />
         </form>
       </FormProvider>
     </Box>

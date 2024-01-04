@@ -23,7 +23,7 @@ const Modal = ({ opened, onClose }: Props) => {
         timingFunction: 'ease-in-out',
       }}>
       <Space h={'md'} />
-      <Form />
+      <Form onClose={onClose} />
     </ModalMantine>
   );
 };

@@ -1,6 +1,6 @@
 export type Publication = {
   id: string | number;
-  photoUrl: string;
+  image: string;
   date?: Date;
   title: string;
   userId: string | number;

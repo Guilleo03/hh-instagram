@@ -14,7 +14,6 @@ const ProtectedLayout = ({ children }: Props) => {
 
   useEffect(() => {
     if (status === 'unauthenticated') redirect('/sign-in');
-    console.log(status);
   }, [status]);
 
   return (

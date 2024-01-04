@@ -5,8 +5,6 @@ export const showNotification = (
   message?: string,
   error?: boolean
 ) => {
-  console.log('show noti');
-
   notifications.show({
     title: title,
     message: message || '',

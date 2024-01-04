@@ -1,13 +1,17 @@
-'use client';
-
 import Feed from '@/components/Feed';
-import publications from '@/mock/publications.json';
 import type { Publication } from '@/types/types';
+import { getPublications } from '@/utils/publications';
+import { Suspense } from 'react';
+import SkeletonComponent from '@/components/Feed/skeleton';
 
-const Home = () => {
+const Home = async () => {
+  const publications = await getPublications();
+
   return (
     <div>
-      <Feed publications={publications as Publication[]} />
+      <Suspense fallback={<SkeletonComponent />}>
+        <Feed publications={publications as Publication[]} />
+      </Suspense>
     </div>
   );
 };
